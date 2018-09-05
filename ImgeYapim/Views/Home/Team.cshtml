@@ -1,0 +1,72 @@
+﻿
+@*<section class="page-section" id="ekip">*@
+<div class="section" id="ekip">
+
+    <div class="container relative">
+
+        <!-- Section Headings -->
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+                <div class="section-title">
+                    Ekip<span class="st-point">.</span>
+                </div>
+                <h2 class="section-heading">Çalışma arkadaşlarımız</h2>
+                <div class="section-line mb-60 mb-xxs-30"></div>
+            </div>
+        </div>
+        <!-- End Section Headings -->
+        <!-- Team Grid -->
+        <div class="team-grid">
+            <!-- Team Item -->
+            @foreach (var item in ViewBag.Crew)
+            {
+                <div class="team-item animate-init" data-anim-type="fade-in" data-anim-delay="100">
+                    <div class="team-item-image">
+                        <img src="@item.CrewPicture" height="270" alt="" />
+
+                    </div>
+                    <div class="team-item-descr">
+                        <div class="team-item-name">
+                            @item.CrewName
+                        </div>
+                        <div class="team-item-role">
+                            @item.CrewJob
+                        </div>
+                        <div class="team-social-links">
+                            @if (item.CrewPhone != null)
+                            {
+                               
+                                <a href="" onclick="alert( '\n @item.CrewName\n @item.CrewPhone'); return false;" target="_blank"><i class="fa fa-phone"></i></a>
+                           
+
+                            }
+                                    @if (item.CrewMail != null)
+                                    {
+                                        <a href="mailto:@item.CrewMail" target="_blank"><i class="fa fa-envelope"></i></a>
+
+                                    }
+                                    @if (item.CrewTwitter != null)
+                                    {
+                                        <a href="@item.CrewTwitter" target="_blank"><i class="fa fa-twitter"></i></a>
+
+                                    }
+                                    @if (item.CrewInstagram != null)
+                                    {
+                                        <a href="@item.CrewInstagram" target="_blank"><i class="fa fa-instagram"></i></a>
+
+                                    }
+
+
+                            </div>
+                    </div>
+                </div>
+            }
+
+            <!-- End Team Item -->
+
+
+        </div>
+        <!-- End Team Grid -->
+    </div>
+
+</div>

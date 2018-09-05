@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ImgeYapim.Models.Artist>
+
+@{
+    ViewBag.Title = "Artist";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Sanatçı Ekle", "AddArtist")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Grup İsmi
+        </th>
+        <th>    
+            Grup Resmi
+        </th>
+
+        <th>
+           
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtistName)
+            </td>
+            <td>
+                <img width="75" src="@item.ArtistPicture" />
+
+            </td>
+          
+
+            <td>
+                @Html.ActionLink("Düzenle", "EditArtist", new { id = item.ArtistID }) |
+                @Html.ActionLink("Sil", "DeleteArtist", new { id = item.ArtistID })
+            </td>
+        </tr>
+    }
+
+</table>

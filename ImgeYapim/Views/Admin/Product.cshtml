@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ImgeYapim.Models.Product>
+
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Yapım</h2>
+
+<p>
+    @Html.ActionLink("Ekle", "AddProduct")
+</p>
+<table class="table">
+    <tr>
+        <th>
+Ad        </th>
+        <th>
+Adres        </th>
+        <th>
+Hakkında        </th>
+        <th>
+Telefon        </th>
+        <th>
+Mail        </th>
+        <th>
+Twitter        </th>
+        <th>
+Instagram        </th>
+        <th>
+Facebook        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductAbout)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductPhone)
+        </td>
+        <td>
+            <a href="mailto:@item.ProductMail" target="_top"> @Html.DisplayFor(modelItem => item.ProductMail)</a>
+
+        </td>
+        <td>
+            <a href="@item.ProductTwitter">@Html.DisplayFor(modelItem => item.ProductTwitter)</a>
+        </td>
+        <td>
+            <a href="@item.ProductInstagram">@Html.DisplayFor(modelItem => item.ProductInstagram)</a>
+        </td>
+        <td>
+            <a href="@item.ProductFacebook">@Html.DisplayFor(modelItem => item.ProductFacebook)</a>
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "EditProduct", new { id=item.ProductID }) 
+          
+        </td>
+    </tr>
+}
+
+</table>

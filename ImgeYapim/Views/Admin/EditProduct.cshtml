@@ -1,0 +1,118 @@
+﻿@model ImgeYapim.Models.Product
+
+@{
+    ViewBag.Title = "EditProduct";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>EditProduct</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Product</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ProductID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductName, "Ad", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductAddress, "Adres", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductAddress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductPhone, "Telefon", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductPhone, new { htmlAttributes = new { @class = "form-control", @type = "tel" } })
+                @Html.ValidationMessageFor(model => model.ProductPhone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductMail, "Mail", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductMail, new { htmlAttributes = new { @class = "form-control", @type = "email" } })
+                @Html.ValidationMessageFor(model => model.ProductMail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductTwitter, "Twitter", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductTwitter, new { htmlAttributes = new { @class = "form-control", @type = "url" } })
+                @Html.ValidationMessageFor(model => model.ProductTwitter, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductInstagram, "Instagram", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductInstagram, new { htmlAttributes = new { @class = "form-control", @type = "url" } })
+                @Html.ValidationMessageFor(model => model.ProductInstagram, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductFacebook, "Facebook", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductFacebook, new { htmlAttributes = new { @class = "form-control", @type = "url" } })
+                @Html.ValidationMessageFor(model => model.ProductFacebook, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductAbout, "Yapım Hakkında", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.ProductAbout, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductAbout, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Kaydet" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "Index")
+</div>
+<script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
+<script src="~/Scripts/tinymce/tinymce.js"></script>
+<script type="text/javascript">
+    // Initialize your tinyMCE Editor with your preferred options
+    tinyMCE.init({
+        // General options
+        mode: "textareas",
+        theme: "modern",
+        language: 'tr_TR',
+        plugins: 'print preview fullpage searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help',
+        toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
+        image_advtab: true,
+        templates: [
+            { title: 'Test template 1', content: 'Test 1' },
+            { title: 'Test template 2', content: 'Test 2' }
+        ],
+        content_css: ["~/Content/Admin/css/sb-admin.css"
+
+        ]
+
+
+    });
+</script>

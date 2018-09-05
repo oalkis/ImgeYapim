@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ImgeYapim.Models.Slider>
+
+@{
+    ViewBag.Title = "Slider";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Slider</h2>
+
+<p>
+    @Html.ActionLink("Slider Ekle", "AddSlider")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            İsim
+        </th>
+        <th>
+Slider Resmi        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SliderName)
+        </td>
+        <td>
+            <img width="200" src="@item.SliderPicture" />
+
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "EditSlider", new { id=item.SliderID }) |
+            @Html.ActionLink("Sil", "DeleteSlider", new { id=item.SliderID })
+        </td>
+    </tr>
+}
+
+</table>

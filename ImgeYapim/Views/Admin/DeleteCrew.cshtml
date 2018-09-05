@@ -1,0 +1,41 @@
+﻿@model ImgeYapim.Models.Crew
+
+@{
+    ViewBag.Title = "DeleteCrew";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h3>@Html.DisplayFor(model => model.CrewName) adlı üyeyi silmek istediğinize emin misiniz?</h3>
+<div>
+    <hr />
+
+
+    <dl class="d-block">
+        <dd>
+            @Html.DisplayFor(model => model.CrewName)
+        </dd>
+       <content>
+           <br />
+       </content>
+
+        <dd>
+
+            <img width="150" src="@Model.CrewPicture" />
+            @Html.ValidationMessageFor(model => model.CrewPicture, "", new { @class = "text-danger" })
+        </dd>
+
+
+    </dl>
+    <br />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Geri Dön", "Crew")
+        </div>
+    }
+</div>

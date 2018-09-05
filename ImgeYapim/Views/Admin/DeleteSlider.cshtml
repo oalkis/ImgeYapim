@@ -1,0 +1,38 @@
+﻿@model ImgeYapim.Models.Slider
+
+@{
+    ViewBag.Title = "DeleteSlider";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h3>Silmek istediğiniz emin misiniz?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dd>
+            @Html.DisplayFor(model => model.SliderName)
+        </dd>
+
+        <content>
+            <br />
+        </content>
+        <dd>
+
+            <img width="500" src="@Model.SliderPicture" />
+            @Html.ValidationMessageFor(model => model.SliderPicture, "", new { @class = "text-danger" })
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Geri Dön", "Slider")
+        </div>
+    }
+</div>

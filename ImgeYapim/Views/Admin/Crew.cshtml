@@ -1,0 +1,79 @@
+﻿@model IEnumerable<ImgeYapim.Models.Crew>
+@{
+    ViewBag.Title = "Crew";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Ekip</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kişi", "AddCrew")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Resim
+        </th>
+        <th>
+            İsim
+        </th>
+        <th>
+            Görev
+        </th>
+        <th>
+            Mail
+        </th>
+        <th>
+            Telefon
+        </th>
+        <th>
+            Twitter
+        </th>
+        <th>
+            Instagram
+        </th>
+
+        <th>
+
+        </th>
+
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            <img width="100"  src="@item.CrewPicture" />
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CrewName)
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CrewJob)
+        </td>
+        <td>
+            <a href="mailto:@item.CrewMail" target="_top"> @Html.DisplayFor(modelItem => item.CrewMail)</a>
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CrewPhone)
+        </td>
+        <td>
+            <a href="@item.CrewTwitter">@Html.DisplayFor(modelItem => item.CrewTwitter)</a>
+        </td>
+        <td>
+            <a href="@item.CrewInstagram">@Html.DisplayFor(modelItem => item.CrewInstagram)</a>
+        </td>
+
+        <td>
+            @Html.ActionLink("Düzenle", "EditCrew", new { id = item.CrewID }) |
+            @Html.ActionLink("Sil", "DeleteCrew", new { id = item.CrewID })
+        </td>
+    </tr>
+    }
+
+</table>

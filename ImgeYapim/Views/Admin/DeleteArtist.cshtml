@@ -1,0 +1,45 @@
+﻿@model ImgeYapim.Models.Artist
+
+@{
+    ViewBag.Title = "DeleteArtist";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h3>Bu gurubu silmek istediğinize emin misiniz?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+Grup Adı        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArtistName)
+        </dd>
+
+        <dt>
+Grup Resmi        </dt>
+
+        <dd>
+                
+                    <img width="150" src="@Model.ArtistPicture" />
+                    @Html.ValidationMessageFor(model => model.ArtistPicture, "", new { @class = "text-danger" })
+        </dd>
+
+        <dt>
+Grup Bilgileri        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArtistAbout)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" /> |
+        </div>
+    }
+</div>

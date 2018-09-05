@@ -1,0 +1,254 @@
+﻿@model IEnumerable<ImgeYapim.Models.Artist>
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <title style="text-align:center">İmge Yapım</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="~/Content/Images/Logo/ImgeYapımx72.png">
+    <link rel="apple-touch-icon" href="~/Content/Images/Logo/ImgeYapımx72.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/Content/Images/Logo/ImgeYapımx72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/Content/Images/Logo/ImgeYapımx72.png">
+    <!-- CSS -->
+    @*<link href="~/Content/www/css/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/www/css/style.css">
+    <link rel="stylesheet" href="~/Content/www/css/style-responsive.css">
+    <link href="~/Content/fullpage.css" rel="stylesheet" />
+
+    <link href="~/Content/widget.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/www/css/animate.css">
+    <link rel="stylesheet" href="~/Content/www/css/animations.min.css">
+    <link rel="stylesheet" href="~/Content/www/css/vertical-rhythm.min.css">
+    <link rel="stylesheet" href="~/Content/www/css/owl.carousel.css">
+    <link href="~/Content/www/css/owl.transitions.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/www/css/magnific-popup.css">
+    <link href="~/Content/fullcalendar.min.css" rel="stylesheet" />
+    <link href="~/Content/fancybox/thumbs.css" rel="stylesheet" />
+    <link href="~/Content/fancybox/core.css" rel="stylesheet" />
+    <link href="~/Content/fancybox/fullscreen.css" rel="stylesheet" />
+    <link href="~/Content/fancybox/slideshow.css" rel="stylesheet" />
+    <link href="~/Content/fancybox/share.css" rel="stylesheet" />
+
+</head>
+<body class="appear-animate">
+
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <b class="spinner">Yükleniyor...</b>
+    </div>
+    <!-- End Page Loader -->
+    <!-- Page Wrap -->
+    <div class="page" id="top">
+        <!-- Navigation panel -->
+        <nav class="main-nav js-stick stick-fixed">
+
+            <div class="full-wrapper relative clearfix">
+
+                <!-- Logo ( * your text or image into link tag *) -->
+                <div class="nav-logo-wrap local-scroll">
+                    <a href="#top" class="logo"><img src="~/Content/Images/Logo/ImgeYapım.png" width="80" height="27" alt="" /></a>
+                </div>
+
+                <div class="mobile-nav"><i class="fa fa-bars"></i></div>
+
+                <!-- Main Menu -->
+                <div class="inner-nav desktop-nav">
+
+                    <ul id="#Menu">
+                        <li data-menuanchor="first" class="active"><a href="#anasayfa">ANA SAYFA</a></li>
+                        <li data-menuanchor="second"><a href="#hakkimizda">HAKKIMIZDA</a></li>
+                        <li data-menuanchor="third"><a href="#sanatcilar">MENAJERLİK & BOOKING</a></li>
+                        <li data-menuanchor="fourth"><a href="#etkinlik">ETKİNLİK TAKVİMİ</a></li>
+                        <li data-menuanchor="fifth"><a href="#ekip">EKİP</a></li>
+                        <li data-menuanchor="sixth"><a href="#iletisim">İLETİŞİM</a></li>
+                        <li class="hidden-xs hidden-sm hidden-md"><a></a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+        <div id="fullpage">
+            @Html.Partial("Home");
+            @Html.Partial("About");
+            @Html.Partial("Artist");
+            @Html.Partial("EventCalendar");
+            @Html.Partial("Team");
+            @Html.Partial("Contact");
+
+            <div class="spotify-embed-close text-center"><p class="close-text"><i class="fa fa-spotify"></i></p></div>
+            <div class="spotify-embed-block text-center" style="display: none;">
+                <iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:37i9dQZF1DX0QmdOLcmGcN" width="500" height="500" frameborder="0" allowtransparency="true"></iframe>
+            </div>
+
+
+            @RenderBody();
+
+            <div class="bot-menu local-scroll">
+
+                <!-- See Map -->
+                <a href="#" class="bot-menu-item animate-init" data-anim-type="fade-in-right" data-anim-delay="0" id="see-map">
+                    <span class="bot-menu-icon">
+                        <i class="fa fa-map-marker"></i>
+                    </span>
+                    Haritayı Göster
+                </a>
+                <!-- End See Map -->
+                <!-- Scroll Up -->
+                <a href="#top" class="bot-menu-item animate-init" data-anim-type="fade-in-left" data-anim-delay="0">
+                    <span class="bot-menu-icon">
+                        <i class="fa fa-arrow-circle-o-up"></i>
+                    </span>
+                    Yukarı Çık
+                </a>
+                <!-- End Scroll Up -->
+            </div>
+
+        </div>
+        <!-- End Bottom menu -->
+        <!-- Google Map -->
+        <div class="google-map">
+            <div data-address="No:40/4, Nailbey street, Caferaga neighborhood, Kadıkoy, Istanbul, Turkey" data-color="#000000" id="map-canvas"></div>
+        </div>
+        <!-- End Google Map -->
+        <!-- Foter -->
+        <footer class="small-section bg-dark footer">
+            <div class="container animate-init" data-anim-type="bounce-in-up" data-anim-delay="0">
+
+                <!-- Footer Text -->
+                <div class="footer-text">
+
+                    <!-- Copyright -->
+                    <div class="footer-copy">
+                        <a href="#" target="_blank">&copy; İmge Yapım <span class="number">2018</span></a>.
+                    </div>
+                    <!-- End Copyright -->
+
+
+                </div>
+                <!-- End Footer Text -->
+                <!-- Social Links -->
+                @foreach (var item in ViewBag.Product)
+                {
+                    <div class="footer-social-links">
+                        <div class="social-links tooltip-bot">
+                            <a href="@item.ProductFacebook" title="Facebook" target="@item.ProductFacebook"><i class="fa fa-facebook"></i></a>
+                            <a href="@item.ProductTwitter" title="Twitter" target="@item.ProductTwitter"><i class="fa fa-twitter"></i></a>
+                            <a href="mailto:@item.ProductMail" title="E-mail" target="@item.ProductMail"><i class="fa fa-envelope"></i></a>
+                            <a href="@item.ProductInstagram" title="E-mail" target="@item.ProductInstagram"><i class="fa fa-instagram"></i></a>
+
+                        </div>
+                    </div>
+
+                }
+
+                <!-- End Social Links -->
+
+            </div>
+        </footer>
+        <!-- End Foter -->
+    </div>
+    <!-- End Page Wrap -->
+    <!-- Works Expander -->
+    <div class="work-full">
+        <div class="work-navigation clearfix">
+            <a class="work-prev"><span><i class="fa fa-chevron-left"></i>&nbsp;Previous</span></a>
+            <a class="work-all"><span><i class="fa fa-times"></i>&nbsp;All works</span></a>
+            <a class="work-next"><span>Next&nbsp;<i class="fa fa-chevron-right"></i></span></a>
+        </div>
+        <div class="work-full-load">
+        </div>
+        <div class="work-loader">
+        </div>
+    </div>
+    <div class="body-masked">
+    </div>
+    <!-- End Works Expander -->
+    <!-- JS -->
+
+    <script src="~/Content/www/js/jquery-1.11.1.min.js"></script>
+    <script src="~/Content/www/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="~/Content/www/js/jquery.easing.1.3.js"></script>
+    <script src="~/Content/www/js/bootstrap.min.js"></script>
+    <script src="~/Content/www/js/SmoothScroll.js"></script>
+    <script src="~/Content/www/js/jquery.scrollTo.min.js"></script>
+    <script src="~/Content/www/js/jquery.localScroll.min.js"></script>
+    <script src="~/Content/www/js/jquery.ba-hashchange.min.js"></script>
+    <script src="~/Content/www/js/jquery.viewport.mini.js"></script>
+    <script src="~/Content/www/js/jquery.countTo.js"></script>
+    <script src="~/Content/www/js/jquery.appear.js"></script>
+    <script src="~/Content/www/js/jquery.sticky.js"></script>
+    <script src="~/Content/www/js/jquery.parallax-1.1.3.js"></script>
+    <script src="~/Content/www/js/jquery.fitvids.js"></script>
+    <script src="~/Content/www/js/owl.carousel.min.js"></script>
+    <script src="~/Content/www/js/isotope.pkgd.min.js"></script>
+    <script src="~/Content/www/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/Content/www/js/jquery.magnific-popup.min.js"></script>
+    <!-- Replace test API Key "AIzaSyAZsDkJFLS0b59q7cmW0EprwfcfUA8d9dg" with your own one below
+    **** You can get API Key here - https://developers.google.com/maps/documentation/javascript/get-api-key -->
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyB1k_ajTUus8RFGyLmrZUKAL8YMdOypqJU"></script>
+    <script src="~/Scripts/widget.js"></script>
+    <script src="~/Content/www/js/gmap3.min.js"></script>
+    <script src="~/Content/www/js/all.js"></script>
+    <script src="~/Content/www/js/contact-form.js"></script>
+    <script src="~/Content/www/js/animations.min.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/fullcalendar.min.js"></script>
+    <script src="~/Scripts/fullpage.js"></script>
+    <script src="~/Scripts/gcal.min.js"></script>
+    <script src="~/Scripts/locale-all.js"></script>
+    <script src="~/Scripts/fancybox/core.js"></script>
+    <script src="~/Scripts/fancybox/fullscreen.js"></script>
+    <script src="~/Scripts/fancybox/guestures.js"></script>
+    <script src="~/Scripts/fancybox/hash.js"></script>
+    <script src="~/Scripts/fancybox/media.js"></script>
+    <script src="~/Scripts/fancybox/share.js"></script>
+    <script src="~/Scripts/fancybox/slideshow.js"></script>
+    <script src="~/Scripts/fancybox/thumbs.js"></script>
+    <script src="~/Scripts/fancybox/wheel.js"></script>
+    <script type='text/javascript'>
+
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                defaultView: 'month',
+
+                googleCalendarApiKey: 'AIzaSyC2H39bgBBtrunUm2OAKjubgQZRhMb8KCI',
+                events: {
+                    googleCalendarId: 'm6f1ie6iggf6q10lgr1l38c42c@group.calendar.google.com',
+                    //className: 'gcal-event' // an option!
+                },
+                eventClick: function (event) {
+                    window.open(event.url, 'gcalevent', 'width=900,height=600');
+                    return false;
+                },
+                locale: 'tr',
+            });
+        });
+
+    </script>
+    <script>
+        $.fn.fullpage({
+            slidesColor: ['red', 'blue'],
+            afterLoad: function (anchor, index) {
+                var activeItem;
+
+                if (index == 1 || index == 2 || index == 3) {
+                    activeItem = $('#menu').find('li').first()
+                } else {
+                    activeItem = $('#menu').find('li').last()
+                }
+
+                activeItem
+                    .addClass('active')
+                    .siblings().removeClass('active');
+            }
+        });
+    </script>
+</body>
+</html>

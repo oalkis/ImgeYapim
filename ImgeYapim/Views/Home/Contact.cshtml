@@ -1,0 +1,93 @@
+﻿<section class="page-section bg-scroll bg-dark-alfa-90" data-background="~/Content/www/images/full-width-images/section-bg-8.jpg" id="iletisim">
+    <div class="section" id="iletisim" data-background="~/Content/www/images/full-width-images/section-bg-8.jpg">
+        <div class="container relative">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+                    <div class="section-title">
+                        iletişim<span class="st-point">.</span>
+                    </div>
+                    <h2 class="section-heading">Bize ulaşın</h2>
+                    <div class="section-line mb-60 mb-xxs-30"></div>
+                </div>
+            </div>
+            @foreach (var item in ViewBag.Product)
+            {
+                <div class="row">
+
+                    <!-- Contact Info -->
+                    <div class="col-md-4">
+
+                        <!-- Phone -->
+                        <div class="contact-item mb-40 mb-md-20">
+
+                            <!-- Icon -->
+                            <div class="ci-icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+
+                            <div class="ci-title">Telefon</div>
+
+                            <div class="ci-phone">@item.ProductPhone</div>
+
+                        </div>
+                    </div>
+                    <!-- End Phone -->
+                    <!-- Address -->
+
+                    <div class="col-md-4">
+
+                        <div class="contact-item mb-40 mb-md-20">
+
+                            <!-- Icon -->
+                            <div class="ci-icon">
+                                <i class="fa fa-map-marker"></i>
+                            </div>
+
+                            <div class="ci-title">Adres</div>
+
+                            <div class="ci-text">@item.ProductAddress</div>
+
+                        </div>
+                    </div>
+
+                    <!-- End Address -->
+                    <!-- Email -->
+                    <div class="col-md-4">
+
+                        <div class="contact-item mb-md-40">
+
+                            <!-- Icon -->
+                            <div class="ci-icon">
+                                <a href="mailto:@item.ProductMail">
+                                    <i class="fa fa-envelope"></i>
+                                </a>
+                            </div>
+
+                            <div class="ci-title">E-Mail</div>
+
+                            <div class="ci-text">
+                                <a href="mailto:@item.ProductMail" title="E-mail" target="@item.ProductMail">@item.ProductMail</a>
+
+
+                            </div>
+                            <!-- End Email -->
+
+                        </div>
+                    </div>
+
+                </div>
+
+            }
+            <!-- End Contact Info -->
+
+
+            <div class="col-md-7 col-md-offset-1">
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
