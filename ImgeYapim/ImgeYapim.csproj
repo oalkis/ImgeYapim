@@ -507,8 +507,6 @@
     <Content Include="Content\Admin\.jsbeautifyrc" />
     <Content Include="Content\Admin\.travis.yml" />
     <Content Include="Content\Admin\LICENSE" />
-    <Content Include="Content\Admin\package-lock.json" />
-    <Content Include="Content\Admin\package.json" />
     <Content Include="Content\Admin\pug\blank.pug" />
     <Content Include="Content\Admin\pug\cards.pug" />
     <Content Include="Content\Admin\pug\charts.pug" />
