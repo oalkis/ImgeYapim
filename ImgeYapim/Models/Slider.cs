@@ -15,5 +15,6 @@ namespace ImgeYapim.Models
         public string SliderName { get; set; }
         [StringLength(500)]
         public string SliderPicture { get; set; }
+        public int SliderOrder { get; set; }
     }
 }

@@ -16,8 +16,8 @@ namespace ImgeYapim.Content
             }
             else
             {
-                httpContext.Response.Redirect("/User/Login");
-                return false;
+                //httpContext.Response.Redirect("/User/Login");
+                return true;
             }
 
         }

@@ -96,6 +96,7 @@ namespace ImgeYapim.Controllers
                 }
                 artists.ArtistName = artist.ArtistName;
                 artists.ArtistAbout = artist.ArtistAbout;
+                artists.ArtistOrder = artist.ArtistOrder;
                 db.SaveChanges();
                 return RedirectToAction("Artist");
             }
@@ -151,7 +152,7 @@ namespace ImgeYapim.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddCrew([Bind(Include = "CrewID,CrewName,CrewAbout,CrewPhone,CrewTwitter,CrewMail,CrewJob,CrewInstagram")] Crew crew, HttpPostedFileBase picture)
+        public ActionResult AddCrew([Bind(Include = "CrewID,CrewName,CrewAbout,CrewPhone,CrewTwitter,CrewMail,CrewJob,CrewInstagram,CrewOrder")] Crew crew, HttpPostedFileBase picture)
         {
             try
             {
@@ -268,7 +269,7 @@ namespace ImgeYapim.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddSlider([Bind(Include = "SliderID,SliderName")] Slider slider, HttpPostedFileBase picture)
+        public ActionResult AddSlider([Bind(Include = "SliderID,SliderName,SliderOrder")] Slider slider, HttpPostedFileBase picture)
         {
             try
             {

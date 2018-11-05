@@ -27,6 +27,8 @@ namespace ImgeYapim.Models
         public string CrewTwitter { get; set; }
         [StringLength(100)]
         public string CrewInstagram { get; set; }
+        public int CrewOrder { get; set; }
+
 
         [AllowHtml]
         public string CrewAbout { get; set; }
