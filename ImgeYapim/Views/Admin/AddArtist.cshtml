@@ -27,13 +27,15 @@
             @Html.ValidationMessageFor(model => model.ArtistPicture, "", new { @class = "text-danger" })
         </div>
     </div>
-    @*<div class="form-group">
-        @Html.LabelFor(model => model.ArtistOrder, "Sıra", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="form-group">
+            @Html.LabelFor(model => model.ArtistOrder, "Sıra", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <input type="number" name="Id"  class="form-control" />
+
+            @Html.EditorFor(model => model.ArtistOrder, new { htmlAttributes = new { type = "number", min = "1", max = "20", @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.ArtistOrder, "", new { @class = "text-danger" })
         </div>
-    </div>*@
+        </div>
+
     <div class="form-group">
         @Html.LabelFor(model => model.ArtistAbout, "Grup Bilgileri", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -48,28 +50,28 @@
         </div>
     </div>
 </div>
-}
-<script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
-<script src="~/Scripts/tinymce/tinymce.js"></script>
-<script type="text/javascript">
-    // Initialize your tinyMCE Editor with your preferred options
-    tinyMCE.init({
-        // General options
-        mode: "textareas",
-        theme: "modern",
-        language: 'tr_TR',
-        plugins: 'print preview fullpage searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help',
-        toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
-        image_advtab: true,
-        templates: [
-            { title: 'Test template 1', content: 'Test 1' },
-            { title: 'Test template 2', content: 'Test 2' }
-        ],
-        content_css: ["~/Content/Admin/css/sb-admin.css"
+        }
+        <script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
+        <script src="~/Scripts/tinymce/tinymce.js"></script>
+        <script type="text/javascript">
+            // Initialize your tinyMCE Editor with your preferred options
+            tinyMCE.init({
+                // General options
+                mode: "textareas",
+                theme: "modern",
+                language: 'tr_TR',
+                plugins: 'print preview fullpage searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help',
+                toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
+                image_advtab: true,
+                templates: [
+                    { title: 'Test template 1', content: 'Test 1' },
+                    { title: 'Test template 2', content: 'Test 2' }
+                ],
+                content_css: ["~/Content/Admin/css/sb-admin.css"
 
-        ]
+                ]
 
 
-    });
-</script>
+            });
+        </script>
 

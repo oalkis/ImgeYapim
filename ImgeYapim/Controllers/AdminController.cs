@@ -34,13 +34,21 @@ namespace ImgeYapim.Controllers
             var artists = db.Artists.ToList();
             return View(artists);
         }
+        [HttpPost]
+        public ActionResult Artist(int id)
+        {
+            var artists = db.Artists.Where(a => a.ArtistID == id).SingleOrDefault();
+          
+            db.SaveChanges();
+            return Json("ok", JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult AddArtist()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult AddArtist([Bind(Include = "ArtistID,ArtistName,ArtistAbout")] Artist artist, HttpPostedFileBase picture)
+        public ActionResult AddArtist([Bind(Include = "ArtistID,ArtistName,ArtistAbout,ArtistOrder")] Artist artist, HttpPostedFileBase picture)
         {
             try
             {

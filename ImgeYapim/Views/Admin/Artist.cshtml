@@ -4,42 +4,60 @@
     ViewBag.Title = "Artist";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+@ViewBag.Order;
+@using (Html.BeginForm("UpdateOrder", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
 
+        <p>
+            @Html.ActionLink("Sanatçı Ekle", "AddArtist")
+        </p>
+        <div class="form-group">
 
-<p>
-    @Html.ActionLink("Sanatçı Ekle", "AddArtist")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Grup İsmi
-        </th>
-        <th>    
-            Grup Resmi
-        </th>
+            <table class="table">
+                <tr>
+                    <th>
+                        Grup İsmi
+                    </th>
+                    <th>
+                        Grup Resmi
+                    </th>
 
-        <th>
-           
-        </th>
-    </tr>
+                    <th>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArtistName)
-            </td>
-            <td>
-                <img width="75" src="@item.ArtistPicture" />
+                    </th>
+                </tr>
 
-            </td>
-          
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
 
-            <td>
-                @Html.ActionLink("Düzenle", "EditArtist", new { id = item.ArtistID }) |
-                @Html.ActionLink("Sil", "DeleteArtist", new { id = item.ArtistID })
-            </td>
-        </tr>
-    }
+                            @Html.DisplayFor(modelItem => item.ArtistName)
+                        </td>
+                        <td>
+                            @*@Html.EditorFor(modelItem => item.ArtistOrder, new { htmlAttributes = new { type = "number", min = "1", max = "20", @class = "form-control" } })*@
+                            @Html.DropDownListFor(modelItem => item.ArtistOrder, new SelectList(new List<Int32> { (1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11)}), new { htmlAttributes = new {  @class = "form-control" } })</td>
+                        <td>
+                            <img width="75" src="@item.ArtistPicture" />
 
-</table>
+                        </td>
+                        <td>
+                            @Html.ActionLink("Kaydet", "UpdateOrder",new { id = item.ArtistID, order=item.ArtistOrder }) |
+                            @Html.ActionLink("Düzenle", "EditArtist", new { id = item.ArtistID }) |
+                            @Html.ActionLink("Sil", "DeleteArtist", new { id = item.ArtistID })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+
+        <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Kaydet" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+
+}

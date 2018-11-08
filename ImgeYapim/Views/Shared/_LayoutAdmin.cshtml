@@ -17,8 +17,8 @@
     <link href="/content/admin/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="/content/admin/css/sb-admin.css" rel="stylesheet">
-    <link rel="shortcut icon" href="~/Resimler/TurkanEldiven.png" />
-
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/jquery.jqGrid/ui.jqgrid.css" rel="stylesheet" />
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
@@ -92,7 +92,11 @@
             </div>
         </div>
         <!-- Bootstrap core JavaScript-->
-        <script src="/content/admin/vendor/jquery/jquery.min.js"></script>
+        <script src="~/Content/www/js/jquery-1.11.1.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.10.0.js"></script>
+        <script src="~/Scripts/i18n/grid.locale-tr.js"></script>
+        <script src="~/Scripts/jquery.jqGrid.min.js"></script>
+        @*<script src="/content/admin/vendor/jquery/jquery.min.js"></script>*@
         <script src="/content/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- Core plugin JavaScript-->
         <script src="/content/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -105,6 +109,58 @@
         <!-- Custom scripts for this page-->
         <script src="/content/admin/js/sb-admin-datatables.min.js"></script>
         <script src="/content/admin/js/sb-admin-charts.min.js"></script>
+        <script>
+
+            $(function () {
+                debugger;
+                $("#Demogrid").jqGrid
+                    ({
+                       
+                        url: "/Json/GetCustomers",
+                        datatype: 'json',
+                        mtype: 'Get',
+                        //table header name
+                        colNames: ['ID', 'Order', 'Name',
+                            'Picture'],
+                        //colModel takes the data from controller and binds to grid
+                        colModel: [
+                            { name: "ArtistID", width: 50 },
+                            { name: "ArtistOrder", width: 50 },
+                            { name: "ArtistName", width: 150 },
+                            { name: 'ArtistPicture',width: 750, align: "center", editable: true, formatter: imageFormat, resizable: true },
+
+                        ],
+                        height: 'auto',
+                        rowNum: 10,
+                        viewrecords: true,
+                        caption: 'Sanatçılar',
+                        emptyrecords: 'No records',
+                        jsonReader:
+                            {
+                                root: "rows",
+                                page: "page",
+                                total: "total",
+                                records: "records",
+                                repeatitems: false,
+                                Id: "0"
+                            },
+                        autowidth: false,
+                        
+                    });
+
+                function imageFormat(cellvalue, options, rowObject) {
+                    var orko = cellvalue;
+                    
+                    return '<img src="' + orko + '" />';
+
+                }
+               
+            });
+             
+
+
+        </script>
+
 
     </div>
 </body>
