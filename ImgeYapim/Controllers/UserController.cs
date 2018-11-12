@@ -47,7 +47,7 @@ namespace ImgeYapim.Controllers
         public ActionResult Login(User user, string PasswordHash)
         {
 
-            var login = db.User.Where(u => u.UserName == "house").SingleOrDefault();
+            var login = db.User.Where(u => u.UserName == "admin").SingleOrDefault();
 
             var doesPasswordMatch = Crypto.VerifyHashedPassword(login.PasswordHash, PasswordHash);
 

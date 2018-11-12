@@ -16,6 +16,7 @@ namespace ImgeYapim.Controllers
         public ActionResult Index()
         {
             ViewBag.Artist = db.Artists.OrderBy(a => a.ArtistOrder).ToList();
+            ViewBag.DJ = db.DJs.OrderBy(a => a.DJOrder).ToList();
             ViewBag.Crew = db.Crew.OrderBy(a=>a.CrewOrder).ToList();
             ViewBag.Slider = db.Slider.OrderBy(a=>a.SliderOrder).ToList();
             ViewBag.Product = db.Product.ToList();

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ImgeYapim.Models.DatabaseContext
+namespace ImgeYapim.Models
 {
     public class DJ
     {

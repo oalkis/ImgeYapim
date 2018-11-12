@@ -13,7 +13,7 @@ namespace ImgeYapim.Models.DatabaseContext
         {
         }
         public DbSet<Artist> Artists { get; set; }
-        public DbSet<DJ> DJ { get; set; }
+        public DbSet<DJ> DJs { get; set; }
         public DbSet<Crew> Crew { get; set; }
         public DbSet<Slider> Slider { get; set; }
         public DbSet<Product> Product { get; set; }
