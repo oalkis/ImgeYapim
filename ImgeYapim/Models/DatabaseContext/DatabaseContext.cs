@@ -13,6 +13,7 @@ namespace ImgeYapim.Models.DatabaseContext
         {
         }
         public DbSet<Artist> Artists { get; set; }
+        public DbSet<DJ> DJ { get; set; }
         public DbSet<Crew> Crew { get; set; }
         public DbSet<Slider> Slider { get; set; }
         public DbSet<Product> Product { get; set; }
@@ -27,6 +28,8 @@ namespace ImgeYapim.Models.DatabaseContext
             modelBuilder.Entity<Slider>();
             modelBuilder.Entity<Product>();
             modelBuilder.Entity<User>();
+            modelBuilder.Entity<DJ>();
+
 
 
             modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
