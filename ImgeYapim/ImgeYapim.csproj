@@ -867,12 +867,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\JsonController.cs" />
     <Compile Include="Controllers\UserAuthorize.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811051445439_InitialCreate.cs" />
+    <Compile Include="Migrations\201811051445439_InitialCreate.Designer.cs">
+      <DependentUpon>201811051445439_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\Crew.cs" />
     <Compile Include="Models\DatabaseContext\DatabaseContext.cs" />
@@ -933,9 +937,6 @@
     <Content Include="Scripts\package.json" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Admin\UpdateOrder.cshtml" />
-    <Content Include="Views\Json\Indssex.cshtml" />
-    <Content Include="Views\Json\Ind2ex.cshtml" />
-    <Content Include="Views\Json\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -955,6 +956,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201811051445439_InitialCreate.resx">
+      <DependentUpon>201811051445439_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

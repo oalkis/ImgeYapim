@@ -78,7 +78,14 @@
             @Html.ValidationMessageFor(model => model.CrewInstagram, "", new { @class = "text-danger" })
         </div>
     </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CrewOrder, "Sıra", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CrewOrder, new { htmlAttributes = new { type = "number", min = "1", max = "20", @class = "form-control" } })
 
+            @Html.ValidationMessageFor(model => model.CrewOrder, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
 
     <div class="form-group">

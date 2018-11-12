@@ -18,6 +18,9 @@
             İsim
         </th>
         <th>
+            Görüntülenme Sırası
+        </th>
+        <th>
             Görev
         </th>
         <th>
@@ -45,12 +48,15 @@
     {
     <tr>
         <td>
-            <img width="100"  src="@item.CrewPicture" />
+            <img width="100" src="@item.CrewPicture" />
 
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CrewName)
 
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CrewOrder)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CrewJob)

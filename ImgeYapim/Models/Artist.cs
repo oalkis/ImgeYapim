@@ -18,7 +18,6 @@ namespace ImgeYapim.Models
         public string ArtistPicture { get; set; }
         [AllowHtml]
         public string ArtistAbout { get; set; }
-       
         public int ArtistOrder { get; set; }
     }
 }

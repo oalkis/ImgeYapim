@@ -16,7 +16,12 @@
             İsim
         </th>
         <th>
-Slider Resmi        </th>
+            Görüntülenme Sırası
+
+        </th>
+        <th>
+            Slider Resmi
+        </th>
         <th></th>
     </tr>
 
@@ -26,12 +31,15 @@ Slider Resmi        </th>
             @Html.DisplayFor(modelItem => item.SliderName)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.SliderOrder)
+        </td>
+        <td>
             <img width="200" src="@item.SliderPicture" />
 
         </td>
         <td>
-            @Html.ActionLink("Düzenle", "EditSlider", new { id=item.SliderID }) |
-            @Html.ActionLink("Sil", "DeleteSlider", new { id=item.SliderID })
+            @Html.ActionLink("Düzenle", "EditSlider", new { id = item.SliderID }) |
+            @Html.ActionLink("Sil", "DeleteSlider", new { id = item.SliderID })
         </td>
     </tr>
 }

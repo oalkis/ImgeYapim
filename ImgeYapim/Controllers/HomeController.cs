@@ -15,9 +15,9 @@ namespace ImgeYapim.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            ViewBag.Artist = db.Artists.OrderByDescending(a => a.ArtistID).ToList();
-            ViewBag.Crew = db.Crew.ToList();
-            ViewBag.Slider = db.Slider.ToList();
+            ViewBag.Artist = db.Artists.OrderBy(a => a.ArtistOrder).ToList();
+            ViewBag.Crew = db.Crew.OrderBy(a=>a.CrewOrder).ToList();
+            ViewBag.Slider = db.Slider.OrderBy(a=>a.SliderOrder).ToList();
             ViewBag.Product = db.Product.ToList();
             return View();
         }

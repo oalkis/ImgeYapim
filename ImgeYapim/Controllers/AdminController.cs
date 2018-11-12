@@ -29,6 +29,7 @@ namespace ImgeYapim.Controllers
             }
             return View();
         }
+       
         public ActionResult Artist()
         {
             var artists = db.Artists.ToList();
@@ -42,14 +43,17 @@ namespace ImgeYapim.Controllers
             db.SaveChanges();
             return Json("ok", JsonRequestBehavior.AllowGet);
         }
-
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult AddArtist()
         {
-            return View();
+            Artist artists = new Artist();
+            artists.ArtistOrder = db.Artists.Count() + 1;
+            return View(artists);
         }
         [HttpPost]
         public ActionResult AddArtist([Bind(Include = "ArtistID,ArtistName,ArtistAbout,ArtistOrder")] Artist artist, HttpPostedFileBase picture)
         {
+            
             try
             {
                 if (picture != null)
@@ -63,7 +67,6 @@ namespace ImgeYapim.Controllers
                     artist.ArtistPicture = "/Content/Images/ArtistImages/" + newPicuture;
 
                 }
-
                 db.Artists.Add(artist);
                 db.SaveChanges();
                 return RedirectToAction("Artist");
@@ -157,7 +160,9 @@ namespace ImgeYapim.Controllers
         }
         public ActionResult AddCrew()
         {
-            return View();
+            Crew member = new Crew();
+            member.CrewOrder = db.Crew.Count() + 1;
+            return View(member);
         }
         [HttpPost]
         public ActionResult AddCrew([Bind(Include = "CrewID,CrewName,CrewAbout,CrewPhone,CrewTwitter,CrewMail,CrewJob,CrewInstagram,CrewOrder")] Crew crew, HttpPostedFileBase picture)
@@ -274,7 +279,9 @@ namespace ImgeYapim.Controllers
 
         public ActionResult AddSlider()
         {
-            return View();
+            Slider slide = new Slider();
+            slide.SliderOrder = db.Slider.Count() + 1;
+            return View(slide);
         }
         [HttpPost]
         public ActionResult AddSlider([Bind(Include = "SliderID,SliderName,SliderOrder")] Slider slider, HttpPostedFileBase picture)

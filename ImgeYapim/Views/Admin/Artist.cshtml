@@ -4,7 +4,7 @@
     ViewBag.Title = "Artist";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-@ViewBag.Order;
+@ViewBag.Order
 @using (Html.BeginForm("UpdateOrder", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="form-horizontal">
@@ -19,6 +19,8 @@
                     <th>
                         Grup İsmi
                     </th>
+                    <th>
+Görüntülenme Sırası                    </th>
                     <th>
                         Grup Resmi
                     </th>
@@ -36,8 +38,8 @@
                             @Html.DisplayFor(modelItem => item.ArtistName)
                         </td>
                         <td>
-                            @*@Html.EditorFor(modelItem => item.ArtistOrder, new { htmlAttributes = new { type = "number", min = "1", max = "20", @class = "form-control" } })*@
-                            @Html.DropDownListFor(modelItem => item.ArtistOrder, new SelectList(new List<Int32> { (1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11)}), new { htmlAttributes = new {  @class = "form-control" } })</td>
+                            @Html.DisplayFor(modelItem => item.ArtistOrder, new { htmlAttributes = new { type = "number", min = "1", max = "20", @class = "form-control" } })
+                            @*@Html.DropDownListFor(modelItem => item.ArtistOrder, new SelectList(new List<Int32> { (1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11)}), new { htmlAttributes = new {  @class = "form-control" } })</td>*@
                         <td>
                             <img width="75" src="@item.ArtistPicture" />
 
