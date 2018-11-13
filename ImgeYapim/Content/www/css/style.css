@@ -3942,7 +3942,7 @@ a.logo:hover{
    ============================== */
 
 .contact-item{
-    padding-right: 65px !important;
+    /*padding-right: 65px !important;*/
     position: relative;
     color: rgba(255,255,255, .3);
     text-align: center;
@@ -3968,7 +3968,7 @@ a.logo:hover{
 }
 
 .ci-icon{
-    width: 45px;
+    width: 24px;
     height: 40px;
     position: absolute;
     top: 4px;
