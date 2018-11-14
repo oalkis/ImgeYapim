@@ -1,0 +1,87 @@
+﻿@model ImgeYapim.Models.DJ
+
+@{
+    ViewBag.Title = "EditDJ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>EditDJ</h2>
+
+@using (Html.BeginForm("EditDJ", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>DJ</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.DJID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DJName, "Grup Adı", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DJName, new { htmlAttributes = new { @class = "form-control" }, value = "@item.DJName" })
+            @Html.ValidationMessageFor(model => model.DJName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Eski Resim", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <img width="75" src="@Model.DJPicture" />
+            @Html.ValidationMessageFor(model => model.DJPicture, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.DJPicture, "Yeni Resim", htmlAttributes: new { @id = "picture", @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="picture" id="picture" accept=".jpg,.png,.gif,.JPG,.PNG,.GIF,.JPEG" class="form-control" />
+            @Html.ValidationMessageFor(model => model.DJPicture, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.DJOrder, "Sıra", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DJOrder, new { htmlAttributes = new { type = "number", min = "1", max ="20", @class = "form-control" } })
+
+            @Html.ValidationMessageFor(model => model.DJOrder, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.DJAbout, "Grup Bilgileri", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.DJAbout, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DJAbout, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Kaydet" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
+<script src="~/Scripts/tinymce/tinymce.js"></script>
+<script type="text/javascript">
+    // Initialize your tinyMCE Editor with your preferred options
+    tinyMCE.init({
+        // General options
+        mode: "textareas",
+        theme: "modern",
+        language: 'tr_TR',
+        plugins: 'autoresize print preview fullpage searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help',
+        toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
+        image_advtab: true,
+        templates: [
+            { title: 'Test template 1', content: 'Test 1' },
+            { title: 'Test template 2', content: 'Test 2' }
+        ],
+        content_css: ["~/Content/Admin/css/sb-admin.css"
+         
+        ]
+
+
+    });
+</script>

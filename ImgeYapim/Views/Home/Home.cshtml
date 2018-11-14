@@ -1,17 +1,14 @@
 ﻿@*<section class="page-section " id="anasayfa">*@
-<div class="section" id="anasayfa">
+<div class="section"  id="anasayfa">
 
     @*<div class="container relative">*@
-        <div class="home-section fullwidth-slider owl-carousel bg-dark" id="anasayfa">
-            <!-- Slide Item -->@foreach (var item in ViewBag.Slider)
-            {
-                <section class="home-section fixed-height-medium bg-scroll bg-dark-alfa-50 " data-background="@item.SliderPicture"></section>
-            }
-        </div>
-
-
+    <div class="home-section fullwidth-slider owl-carousel bg-dark" >
+        <!-- Slide Item -->@foreach (var item in ViewBag.Slider)
+        {
+            <section class="home-section fixed-height-medium bg-scroll bg-dark-alfa-50 " data-background="@item.SliderPicture"></section>
+        }
     </div>
-
+</div>
 @*</div>*@
 
 

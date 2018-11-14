@@ -4,41 +4,69 @@
 
         <!-- Section Headings -->
         @*<div class="page-section container">*@
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-                    <div class="section-title">
-                        MENAJERLİK VE BOOKING<span class="st-point">.</span>
-                    </div>
-                    <h2 class="section-heading">Birlikte çalıştığımız sanatçılar</h2>
-                    <div class="section-line mb-60 mb-xxs-30"></div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+                <div class="section-title">
+                    MENAJERLİK VE BOOKING<span class="st-point">.</span>
                 </div>
+                <h2 class="section-heading">Birlikte çalıştığımız guruplar</h2>
+                <div class="section-line mb-60 mb-xxs-30"></div>
             </div>
-            <!-- End Section Headings -->
-            <!-- Works Grid -->
-            <ul class="works-grid work-grid-3 clearfix" id="work-grid">
+        </div>
+        <!-- End Section Headings -->
+        <!-- Works Grid -->
+        <ul class="works-grid work-grid-3 clearfix" id="work-grid">
 
 
 
-                @foreach (var item in ViewBag.Artist)
-                {
+            @foreach (var item in ViewBag.Artist)
+            {
 
 
                 <li class="work-item mix photography branding">
-                        <a href="@item.ArtistPicture" data-fancybox="images" data-width="2048" data-height="1365">
-                            <img src="@item.ArtistPicture" />
-                        
-                       
+                    <a href="@item.ArtistPicture" data-fancybox="images" data-width="2048" data-height="1365">
+                        <img src="@item.ArtistPicture" />
+
+
                         <div class="work-intro">
                             <h3 class="work-title">@item.ArtistName</h3>
 
                         </div>
                     </a>
                 </li>
-                }
-            </ul>
-            <!-- End Works Grid -->
-
+            }
+        </ul>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+               
+                <h2 class="section-heading">Birlikte çalıştığımız DJ'ler</h2>
+                <div class="section-line mb-60 mb-xxs-30"></div>
+            </div>
         </div>
+        <ul class="works-grid work-grid-3 clearfix" id="work-grid">
+
+
+
+            @foreach (var item in ViewBag.Artist)
+            {
+
+
+                <li class="work-item mix photography branding">
+                    <a href="@item.DJPicture" data-fancybox="images" data-width="2048" data-height="1365">
+                        <img src="@item.DJPicture" />
+
+
+                        <div class="work-intro">
+                            <h3 class="work-title">@item.DJName</h3>
+
+                        </div>
+                    </a>
+                </li>
+            }
+        </ul>
+        <!-- End Works Grid -->
+
+    </div>
     </div>
 @*</div>*@
 

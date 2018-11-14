@@ -16,10 +16,11 @@ namespace ImgeYapim.Controllers
     {
         private DatabaseContext db = new DatabaseContext();
 
-        // GET: Admin
+        // GET: Admin[UserAuthorize]
         public ActionResult Index()
         {
             ViewBag.GrupSayisi = db.Artists.Count();
+            ViewBag.DJSayisi = db.DJs.Count();
             ViewBag.EkipKisiSayisi = db.Crew.Count();
             ViewBag.SliderSayisi = db.Slider.Count();
             DateTime dt = DateTime.Parse(Request.Cookies["userInfo"]["lastVisit"]);
@@ -29,13 +30,14 @@ namespace ImgeYapim.Controllers
             }
             return View();
         }
-       
+        [UserAuthorize]
         public ActionResult Artist()
         {
             var artists = db.Artists.ToList();
             return View(artists);
         }
         [HttpPost]
+        [UserAuthorize]
         public ActionResult Artist(int id)
         {
             var artists = db.Artists.Where(a => a.ArtistID == id).SingleOrDefault();
@@ -44,6 +46,7 @@ namespace ImgeYapim.Controllers
             return Json("ok", JsonRequestBehavior.AllowGet);
         }
         [AcceptVerbs(HttpVerbs.Get)]
+        [UserAuthorize]
         public ActionResult AddArtist()
         {
             Artist artists = new Artist();
@@ -51,6 +54,7 @@ namespace ImgeYapim.Controllers
             return View(artists);
         }
         [HttpPost]
+        [UserAuthorize]
         public ActionResult AddArtist([Bind(Include = "ArtistID,ArtistName,ArtistAbout,ArtistOrder")] Artist artist, HttpPostedFileBase picture)
         {
             
@@ -61,7 +65,7 @@ namespace ImgeYapim.Controllers
                     WebImage img = new WebImage(picture.InputStream);
                     FileInfo pictureInfo = new FileInfo(picture.FileName);
 
-                    string newPicuture = Guid.NewGuid().ToString() + pictureInfo.Extension;
+                    string newPicuture = artist.ArtistName.ToString() + pictureInfo.Extension;
                     //img = img.Resize(533, 332, true);
                     img.Save("~/Content/Images/ArtistImages/" + newPicuture);
                     artist.ArtistPicture = "/Content/Images/ArtistImages/" + newPicuture;
@@ -100,7 +104,7 @@ namespace ImgeYapim.Controllers
                     WebImage img = new WebImage(picture.InputStream);
                     FileInfo pictureInfo = new FileInfo(picture.FileName);
 
-                    string newPicuture = Guid.NewGuid().ToString() + pictureInfo.Extension;
+                    string newPicuture = artist.ArtistName.ToString() + pictureInfo.Extension;
 
                     img.Save("~/Content/Images/ArtistImages/" + newPicuture);
                     artists.ArtistPicture = "/Content/Images/ArtistImages/" + newPicuture;
@@ -153,6 +157,130 @@ namespace ImgeYapim.Controllers
                 return View();
             }
         }
+
+        public ActionResult DJ()
+        {
+            var DJs = db.DJs.ToList();
+            return View(DJs);
+        }
+        [HttpPost]
+        public ActionResult DJ(int id)
+        {
+            var DJs = db.DJs.Where(a => a.DJID == id).SingleOrDefault();
+
+            db.SaveChanges();
+            return Json("ok", JsonRequestBehavior.AllowGet);
+        }
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult AddDJ()
+        {
+            DJ DJs = new DJ();
+            DJs.DJOrder = db.DJs.Count() + 1;
+            return View(DJs);
+        }
+        [HttpPost]
+        public ActionResult AddDJ([Bind(Include = "DJID,DJName,DJAbout,DJOrder")] DJ DJ, HttpPostedFileBase picture)
+        {
+
+            try
+            {
+                if (picture != null)
+                {
+                    WebImage img = new WebImage(picture.InputStream);
+                    FileInfo pictureInfo = new FileInfo(picture.FileName);
+
+                    string newPicuture = DJ.DJName.ToString() + pictureInfo.Extension;
+                    //img = img.Resize(533, 332, true);
+                    img.Save("~/Content/Images/DJImages/" + newPicuture);
+                    DJ.DJPicture = "/Content/Images/DJImages/" + newPicuture;
+
+                }
+                db.DJs.Add(DJ);
+                db.SaveChanges();
+                return RedirectToAction("DJ");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        public ActionResult EditDJ(int id)
+        {
+            var DJ = db.DJs.Where(a => a.DJID == id).SingleOrDefault();
+            if (DJ == null)
+            {
+                return HttpNotFound();
+            }
+            return View(DJ);
+        }
+        [HttpPost]
+        public ActionResult EditDJ(int id, HttpPostedFileBase picture, DJ DJ)
+        {
+            try
+            {
+                var DJs = db.DJs.Where(a => a.DJID == id).SingleOrDefault();
+                if (picture != null)
+                {
+                    if (System.IO.File.Exists(Server.MapPath(DJ.DJPicture)))
+                    {
+                        System.IO.File.Delete(Server.MapPath(DJ.DJPicture));
+                    }
+                    WebImage img = new WebImage(picture.InputStream);
+                    FileInfo pictureInfo = new FileInfo(picture.FileName);
+
+                    string newPicuture = DJ.DJName.ToString() + pictureInfo.Extension;
+
+                    img.Save("~/Content/Images/DJImages/" + newPicuture);
+                    DJs.DJPicture = "/Content/Images/DJImages/" + newPicuture;
+                }
+                DJs.DJName = DJ.DJName;
+                DJs.DJAbout = DJ.DJAbout;
+                DJs.DJOrder = DJ.DJOrder;
+                db.SaveChanges();
+                return RedirectToAction("DJ");
+            }
+            catch
+            {
+                return View();
+            }
+
+        }
+        public ActionResult DeleteDJ(int id)
+        {
+            var DJ = db.DJs.Where(a => a.DJID == id).SingleOrDefault();
+            if (DJ == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(DJ);
+        }
+        [HttpPost]
+        public ActionResult DeleteDJ(int id, FormCollection collection)
+        {
+            try
+            {
+                var DJ = db.DJs.Where(m => m.DJID == id).SingleOrDefault();
+                if (DJ == null)
+                {
+                    return HttpNotFound();
+
+                }
+                if (System.IO.File.Exists(Server.MapPath(DJ.DJPicture)))
+                {
+                    System.IO.File.Delete(Server.MapPath(DJ.DJPicture));
+                }
+
+
+                db.DJs.Remove(DJ);
+                db.SaveChanges();
+                return RedirectToAction("DJ");
+            }
+            catch
+            {
+                return View();
+            }
+        }
         public ActionResult Crew()
         {
             var crews = db.Crew.ToList();
@@ -174,7 +302,7 @@ namespace ImgeYapim.Controllers
                     WebImage img = new WebImage(picture.InputStream);
                     FileInfo pictureInfo = new FileInfo(picture.FileName);
 
-                    string newPicuture = Guid.NewGuid().ToString() + pictureInfo.Extension;
+                    string newPicuture = crew.CrewName.ToString() + pictureInfo.Extension;
                     //img = img.Resize(533, 332, true);
                     img.Save("~/Content/Images/CrewImages/" + newPicuture);
                     crew.CrewPicture = "/Content/Images/CrewImages/" + newPicuture;
@@ -214,7 +342,7 @@ namespace ImgeYapim.Controllers
                     WebImage img = new WebImage(picture.InputStream);
                     FileInfo pictureInfo = new FileInfo(picture.FileName);
 
-                    string newPicture = Guid.NewGuid().ToString() + pictureInfo.Extension;
+                    string newPicture = crew.CrewName.ToString() + pictureInfo.Extension;
 
                     img.Save("~/Content/Images/CrewImages/" + newPicture);
                     crews.CrewPicture = "/Content/Images/CrewImages/" + newPicture;
@@ -293,7 +421,7 @@ namespace ImgeYapim.Controllers
                     WebImage img = new WebImage(picture.InputStream);
                     FileInfo pictureInfo = new FileInfo(picture.FileName);
 
-                    string newPicuture = Guid.NewGuid().ToString() + pictureInfo.Extension;
+                    string newPicuture = slider.SliderName.ToString() + pictureInfo.Extension;
                     //img = img.Resize(533, 332, true);
                     img.Save("~/Content/Images/SliderImages/" + newPicuture);
                     slider.SliderPicture = "/Content/Images/SliderImages/" + newPicuture;
@@ -333,7 +461,7 @@ namespace ImgeYapim.Controllers
                     WebImage img = new WebImage(picture.InputStream);
                     FileInfo pictureInfo = new FileInfo(picture.FileName);
 
-                    string newPicuture = Guid.NewGuid().ToString() + pictureInfo.Extension;
+                    string newPicuture = slider.SliderName.ToString() + pictureInfo.Extension;
 
                     img.Save("~/Content/Images/SliderImages/" + newPicuture);
                     sliders.SliderPicture = "/Content/Images/SliderImages/" + newPicuture;

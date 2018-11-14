@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ImgeYapim.Models.DJ>
+
+@{
+    ViewBag.Title = "DJ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@ViewBag.Order
+@using (Html.BeginForm("DJ", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+
+        <p>
+            @Html.ActionLink("Dj Ekle", "AddDJ")
+        </p>
+        <div class="form-group">
+
+            <table class="table">
+                <tr>
+                    <th>
+                        Dj İsmi
+                    </th>
+                    <th>
+                        Görüntülenme Sırası
+                    </th>
+                    <th>
+                        Dj Resmi
+                    </th>
+
+                    <th>
+
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+
+                            @Html.DisplayFor(modelItem => item.DJName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DJOrder, new { htmlAttributes = new { type = "number", min = "1", max = "20", @class = "form-control" } })
+                            @*@Html.DropDownListFor(modelItem => item.DJOrder, new SelectList(new List<Int32> { (1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11)}), new { htmlAttributes = new {  @class = "form-control" } })</td>*@
+                        <td>
+                            <img width="75" src="@item.DJPicture" />
+
+                        </td>
+                        <td>
+                            @Html.ActionLink("Kaydet", "UpdateOrder", new { id = item.DJID, order = item.DJOrder }) |
+                            @Html.ActionLink("Düzenle", "EditDJ", new { id = item.DJID }) |
+                            @Html.ActionLink("Sil", "DeleteDJ", new { id = item.DJID })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+
+
+    </div>
+
+}
